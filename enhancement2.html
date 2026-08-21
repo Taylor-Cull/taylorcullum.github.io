@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enhancement 2 | Taylor Cullum</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #d1d5db;
+        }
+
+        nav {
+            background: white;
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        nav a {
+            color: #374151;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            background: white;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            color: #111827;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        ul {
+            margin: 15px 0 20px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #f3f4f6;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 8px 8px 0;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: #111827;
+            color: #d1d5db;
+        }
+
+        @media (max-width: 700px) {
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Enhancement 2</h1>
+    <p>Algorithms and Data Structures</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
+    <a href="original-artifact.html">Original Artifact</a>
+    <a href="enhancement1.html">Enhancement 1</a>
+    <a href="enhancement2.html">Enhancement 2</a>
+    <a href="enhancement3.html">Enhancement 3</a>
+</nav>
+
+<main class="container">
+
+    <article class="content">
+
+        <h2>Algorithms and Data Structures Enhancement</h2>
+
+        <p>
+            The second enhancement to my CS 340 artifact focused on
+            algorithms and data structures. After reviewing the original
+            application, I identified an opportunity to improve how animal
+            records could be searched, filtered, processed, and organized.
+        </p>
+
+        <div class="info-box">
+
+            <h3>Enhancement Focus</h3>
+
+            <ul>
+                <li>Multi-criteria searching</li>
+                <li>Dictionary-based search criteria</li>
+                <li>List-based result processing</li>
+                <li>Filtering database results</li>
+                <li>Sorting returned records</li>
+                <li>Input validation</li>
+            </ul>
+
+        </div>
+
+        <h2>Original Functionality</h2>
+
+        <p>
+            The original application provided basic Read functionality
+            through MongoDB queries. A query could be supplied to retrieve
+            matching animal records, but the application did not provide
+            a dedicated method for combining multiple search criteria and
+            organizing the returned results.
+        </p>
+
+        <p>
+            This created an opportunity to expand the application's data
+            processing capabilities while maintaining the existing MongoDB
+            structure.
+        </p>
+
+        <h2>Multi-Criteria Searching</h2>
+
+        <p>
+            I added a new <code>search_animals()</code> method that accepts
+            multiple search criteria through a Python dictionary.
+        </p>
+
+        <p>
+            Using a dictionary allows multiple field and value pairs to be
+            supplied as search criteria. For example, a user can search
+            for records using an animal type and outcome at the same time.
+        </p>
+
+        <h2>Data Structures</h2>
+
+        <p>
+            The enhancement uses Python dictionaries to represent search
+            criteria and Python lists to store and process the records
+            returned from MongoDB.
+        </p>
+
+        <p>
+            These structures allow the application to organize information
+            in a way that can be easily processed by the Python program.
+        </p>
+
+        <h2>Filtering and Processing</h2>
+
+        <p>
+            The search method passes the supplied criteria to MongoDB and
+            converts the returned records into a Python list. This provides
+            a collection that can be processed and organized before being
+            returned to the user.
+        </p>
+
+        <p>
+            The method also validates the search criteria before performing
+            the database operation. This helps prevent invalid search data
+            from being passed to the application.
+        </p>
+
+        <h2>Sorting</h2>
+
+        <p>
+            I added optional sorting functionality that allows returned
+            animal records to be organized according to a selected field.
+            The user can specify the field used for sorting and choose
+            ascending or descending order.
+        </p>
+
+        <p>
+            This makes the results easier to analyze and provides additional
+            flexibility when working with larger sets of animal records.
+        </p>
+
+        <h2>Example</h2>
+
+        <p>
+            A search can provide multiple criteria and then sort the results
+            by a selected field.
+        </p>
+
+        <div class="info-box">
+
+            <p>
+                <strong>Example search criteria:</strong>
+            </p>
+
+            <p>
+                Animal Type: Dog<br>
+                Outcome: Adoption
+            </p>
+
+            <p>
+                The returned records can then be sorted by another field,
+                such as breed.
+            </p>
+
+        </div>
+
+        <h2>Skills Demonstrated</h2>
+
+        <ul>
+            <li>Python dictionaries</li>
+            <li>Python lists</li>
+            <li>Searching and filtering</li>
+            <li>Sorting</li>
+            <li>Data processing</li>
+            <li>MongoDB queries</li>
+            <li>Input validation</li>
+            <li>Exception handling</li>
+        </ul>
+
+        <h2>Artifact</h2>
+
+        <p>
+            The enhanced Python module demonstrates the algorithms and data
+            structures improvements made during this milestone.
+        </p>
+
+        <a
+            class="button"
+            href="artifacts/enhancement-2-algorithms/milestone3-enhanced.py"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Enhanced Python Code
+        </a>
+
+        <h2>Reflection</h2>
+
+        <p>
+            This enhancement helped me better understand how algorithms and
+            data structures can improve the functionality of an existing
+            application. Rather than simply retrieving records, the
+            application can now process search criteria and organize
+            returned information in a more useful way.
+        </p>
+
+        <p>
+            The enhancement also reinforced the importance of selecting
+            appropriate data structures based on the type of information
+            being processed. Dictionaries provide an effective way to
+            represent search criteria, while lists provide a flexible
+            structure for processing returned records.
+        </p>
+
+        <p>
+            This enhancement builds on the software design improvements from
+            Enhancement 1 and provides a stronger foundation for the final
+            database enhancement.
+        </p>
+
+    </article>
+
+</main>
+
+<footer>
+    <p>© 2026 Taylor Cullum | CS 499 Computer Science Capstone</p>
+</footer>
+
+</body>
+</html>
