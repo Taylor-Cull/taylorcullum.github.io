@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enhancement 3 | Taylor Cullum</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #d1d5db;
+        }
+
+        nav {
+            background: white;
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        nav a {
+            color: #374151;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            background: white;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            color: #111827;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        ul {
+            margin: 15px 0 20px 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #f3f4f6;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .crud-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .crud-item {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 8px 8px 8px 0;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: #111827;
+            color: #d1d5db;
+        }
+
+        @media (max-width: 700px) {
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .crud-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Enhancement 3</h1>
+    <p>Database Development</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
+    <a href="original-artifact.html">Original Artifact</a>
+    <a href="enhancement1.html">Enhancement 1</a>
+    <a href="enhancement2.html">Enhancement 2</a>
+    <a href="enhancement3.html">Enhancement 3</a>
+</nav>
+
+<main class="container">
+
+    <article class="content">
+
+        <h2>Database Enhancement</h2>
+
+        <p>
+            The third enhancement to my CS 340 artifact focused on database
+            functionality. The original application demonstrated Create and
+            Read operations using Python, PyMongo, and MongoDB. For this
+            enhancement, I expanded the application by implementing the
+            remaining Update and Delete operations.
+        </p>
+
+        <div class="info-box">
+
+            <h3>Enhancement Focus</h3>
+
+            <ul>
+                <li>Update database records</li>
+                <li>Delete database records</li>
+                <li>Input validation</li>
+                <li>MongoDB database operations</li>
+                <li>PyMongo error handling</li>
+                <li>Complete CRUD functionality</li>
+            </ul>
+
+        </div>
+
+        <h2>Original Database Functionality</h2>
+
+        <p>
+            The original application provided Create and Read functionality.
+            The Create operation allowed animal records to be inserted into
+            MongoDB, while the Read operation retrieved records based on a
+            supplied query.
+        </p>
+
+        <p>
+            Update and Delete operations were not originally implemented.
+            Adding these operations provided an opportunity to make the
+            application a complete CRUD solution.
+        </p>
+
+        <h2>Complete CRUD Functionality</h2>
+
+        <div class="crud-grid">
+
+            <div class="crud-item">
+                <h3>Create</h3>
+                <p>
+                    Adds a new animal record to the MongoDB collection.
+                </p>
+            </div>
+
+            <div class="crud-item">
+                <h3>Read</h3>
+                <p>
+                    Retrieves animal records that match a specified query.
+                </p>
+            </div>
+
+            <div class="crud-item">
+                <h3>Update</h3>
+                <p>
+                    Modifies information contained in an existing animal
+                    record.
+                </p>
+            </div>
+
+            <div class="crud-item">
+                <h3>Delete</h3>
+                <p>
+                    Removes a selected animal record from the database.
+                </p>
+            </div>
+
+        </div>
+
+        <h2>Update Functionality</h2>
+
+        <p>
+            I added an <code>update()</code> method that accepts a query
+            identifying the record that should be modified and an updates
+            dictionary containing the new information.
+        </p>
+
+        <p>
+            The method uses MongoDB's update functionality to modify the
+            selected document without replacing the entire record.
+        </p>
+
+        <p>
+            Input validation was also added to make sure that both the query
+            and update information are provided as non-empty dictionaries.
+        </p>
+
+        <h2>Delete Functionality</h2>
+
+        <p>
+            I added a <code>delete()</code> method that accepts a query
+            identifying the record to remove.
+        </p>
+
+        <p>
+            The method uses MongoDB's delete operation to remove one matching
+            document from the collection. The method also validates the query
+            before attempting the database operation.
+        </p>
+
+        <h2>Error Handling</h2>
+
+        <p>
+            Both the Update and Delete operations include PyMongo error
+            handling. If a database error occurs, the application reports
+            the problem rather than allowing the exception to terminate the
+            program unexpectedly.
+        </p>
+
+        <p>
+            The methods also return a Boolean result indicating whether a
+            record was successfully modified or deleted.
+        </p>
+
+        <h2>Testing</h2>
+
+        <p>
+            I tested the enhanced database functionality by updating a test
+            animal record and then reading the record to verify that the
+            change was successful. I also tested the Delete operation and
+            verified that the selected test record was no longer returned
+            by the database query.
+        </p>
+
+        <h2>Skills Demonstrated</h2>
+
+        <ul>
+            <li>MongoDB database operations</li>
+            <li>PyMongo</li>
+            <li>CRUD application development</li>
+            <li>Database queries</li>
+            <li>Document updates</li>
+            <li>Document deletion</li>
+            <li>Input validation</li>
+            <li>Exception handling</li>
+        </ul>
+
+        <h2>Artifact</h2>
+
+        <p>
+            The final enhanced Python module demonstrates the database
+            improvements completed during this milestone.
+        </p>
+
+        <a
+            class="button"
+            href="artifacts/enhancement-3-database/CRUDPythonMilestone4FinalEnhanced.py"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Final Enhanced Python Code
+        </a>
+
+        <h2>Reflection</h2>
+
+        <p>
+            This enhancement strengthened my understanding of database
+            development and the importance of complete CRUD functionality.
+            Adding Update and Delete operations allowed the application to
+            manage records throughout their full lifecycle.
+        </p>
+
+        <p>
+            The project also reinforced the importance of validating database
+            operations and handling errors when working with stored data.
+            These practices help make database applications more reliable
+            and maintainable.
+        </p>
+
+        <p>
+            Combined with the previous software engineering and algorithms
+            enhancements, this database enhancement demonstrates the
+            progression of my original CS 340 project into a more complete
+            computing solution.
+        </p>
+
+    </article>
+
+</main>
+
+<footer>
+    <p>© 2026 Taylor Cullum | CS 499 Computer Science Capstone</p>
+</footer>
+
+</body>
+</html>
