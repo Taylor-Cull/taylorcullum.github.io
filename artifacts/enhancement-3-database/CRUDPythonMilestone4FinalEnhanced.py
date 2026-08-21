@@ -1,0 +1,161 @@
+"""
+Enhanced CRUD module for the Austin Animal Center MongoDB database.
+
+This module provides reusable Create and Read operations for the
+AnimalShelter collection.
+"""
+
+from os import getenv
+from pymongo import MongoClient
+from pymongo.errors import PyMongoError
+
+
+class AnimalShelter:
+    """Provide database access operations for the AAC animal collection."""
+
+    def __init__(
+        self,
+        username=None,
+        password=None,
+        host=None,
+        port=None,
+        database="aac",
+        collection="animals",
+    ):
+        """Initialize the MongoDB connection.
+
+        Credentials can be supplied as arguments or through environment
+        variables so they do not have to be hard-coded in the source.
+        """
+        self.username = username or getenv("AAC_MONGO_USER")
+        self.password = password or getenv("AAC_MONGO_PASSWORD")
+        self.host = host or getenv("AAC_MONGO_HOST", "localhost")
+        self.port = int(port or getenv("AAC_MONGO_PORT", "27017"))
+        self.database_name = database
+        self.collection_name = collection
+
+        if not self.username or not self.password:
+            raise ValueError(
+                "MongoDB credentials are required. Provide them as arguments "
+                "or set AAC_MONGO_USER and AAC_MONGO_PASSWORD."
+            )
+
+        connection_string = (
+            f"mongodb://{self.username}:{self.password}@"
+            f"{self.host}:{self.port}"
+        )
+
+        try:
+            self.client = MongoClient(connection_string)
+            self.database = self.client[self.database_name]
+            self.collection = self.database[self.collection_name]
+        except PyMongoError as error:
+            raise ConnectionError(
+                f"Unable to connect to MongoDB: {error}"
+            ) from error
+
+    def create(self, data):
+        """Insert one animal document into the collection.
+
+        Returns True when the document is inserted successfully and
+        False when the database operation fails.
+        """
+        if not isinstance(data, dict) or not data:
+            raise ValueError("Data must be a non-empty dictionary.")
+
+        try:
+            result = self.collection.insert_one(data)
+            return result.acknowledged
+        except PyMongoError as error:
+            print(f"Create operation failed: {error}")
+            return False
+
+    def read(self, query):
+        """Return animal documents matching the supplied query."""
+        if not isinstance(query, dict):
+            raise ValueError("Query must be provided as a dictionary.")
+
+        try:
+            return list(self.collection.find(query, {"_id": False}))
+        except PyMongoError as error:
+            print(f"Read operation failed: {error}")
+            return []
+
+
+    def search_animals(self, criteria=None, sort_by=None, ascending=True):
+        """Search for animals using multiple criteria and optionally sort results.
+
+        Parameters:
+            criteria: Dictionary containing one or more field/value pairs.
+            sort_by: Field name used to sort the returned records.
+            ascending: True for ascending order, False for descending order.
+
+        Returns:
+            A list of matching animal records.
+        """
+        if criteria is None:
+            criteria = {}
+
+        if not isinstance(criteria, dict):
+            raise ValueError("Search criteria must be provided as a dictionary.")
+
+        if any(value is None or value == "" for value in criteria.values()):
+            raise ValueError("Search criteria cannot contain empty values.")
+
+        try:
+            results = list(self.collection.find(criteria, {"_id": False}))
+
+            # Sort the results in Python when a sort field is requested.
+            if sort_by:
+                results.sort(
+                    key=lambda record: str(record.get(sort_by, "")).lower(),
+                    reverse=not ascending,
+                )
+
+            return results
+        except PyMongoError as error:
+            print(f"Search operation failed: {error}")
+            return []
+
+
+    def update(self, query, updates):
+        """Update an existing animal record.
+
+        Parameters:
+            query: Dictionary identifying the record to update.
+            updates: Dictionary containing fields and values to change.
+
+        Returns:
+            True when a matching record is modified, otherwise False.
+        """
+        if not isinstance(query, dict) or not query:
+            raise ValueError("Update query must be a non-empty dictionary.")
+
+        if not isinstance(updates, dict) or not updates:
+            raise ValueError("Updates must be a non-empty dictionary.")
+
+        try:
+            result = self.collection.update_one(query, {"$set": updates})
+            return result.modified_count > 0
+        except PyMongoError as error:
+            print(f"Update operation failed: {error}")
+            return False
+
+    def delete(self, query):
+        """Delete one animal record matching the supplied query.
+
+        Parameters:
+            query: Dictionary identifying the record to delete.
+
+        Returns:
+            True when a record is deleted, otherwise False.
+        """
+        if not isinstance(query, dict) or not query:
+            raise ValueError("Delete query must be a non-empty dictionary.")
+
+        try:
+            result = self.collection.delete_one(query)
+            return result.deleted_count > 0
+        except PyMongoError as error:
+            print(f"Delete operation failed: {error}")
+            return False
