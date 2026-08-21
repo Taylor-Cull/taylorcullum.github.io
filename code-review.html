@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Code Review | Taylor Cullum</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #d1d5db;
+        }
+
+        nav {
+            background: white;
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        nav a {
+            color: #374151;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            background: white;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            color: #111827;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 18px;
+        }
+
+        .video-box {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .video-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .video-button:hover {
+            background: #1d4ed8;
+        }
+
+        .topics {
+            margin-top: 20px;
+        }
+
+        .topics li {
+            margin-bottom: 10px;
+            margin-left: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: #111827;
+            color: #d1d5db;
+        }
+
+        @media (max-width: 700px) {
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CS 499 Code Review</h1>
+    <p>Taylor Cullum | Milestone One</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
+    <a href="original-artifact.html">Original Artifact</a>
+    <a href="enhancement1.html">Enhancement 1</a>
+    <a href="enhancement2.html">Enhancement 2</a>
+    <a href="enhancement3.html">Enhancement 3</a>
+</nav>
+
+<main class="container">
+
+    <article class="content">
+
+        <h2>Milestone One: Informal Code Review</h2>
+
+        <p>
+            For my CS 499 capstone, I selected my CS 340 CRUD Python and
+            MongoDB project as my primary artifact. The original application
+            was designed to connect a Python application to a MongoDB
+            database containing Austin Animal Center animal records.
+        </p>
+
+        <p>
+            The purpose of the code review was to examine the existing
+            functionality, identify areas for improvement, and establish
+            a plan for enhancing the artifact throughout the capstone.
+        </p>
+
+        <div class="video-box">
+
+            <h2>Code Review Video</h2>
+
+            <p>
+                The video below provides a walkthrough of the original
+                application, the existing code structure, identified
+                issues, and my planned capstone enhancements.
+            </p>
+
+            <!-- Replace the # below with your video URL -->
+
+            <a
+                class="video-button"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer">
+                Watch My Code Review
+            </a>
+
+        </div>
+
+        <h2>Project Reviewed</h2>
+
+        <p>
+            The original artifact is a Python-based CRUD application that
+            uses PyMongo to communicate with MongoDB. The application
+            contains an AnimalShelter class that provides database access
+            functionality.
+        </p>
+
+        <p>
+            The original implementation demonstrated Create and Read
+            functionality. The Create operation inserted animal records
+            into MongoDB, while the Read operation retrieved records
+            matching a specified query.
+        </p>
+
+        <h2>Software Design and Engineering Review</h2>
+
+        <p>
+            During the review, I identified several software design issues.
+            The original project contained hard-coded database credentials,
+            duplicated code, and inconsistent use of the MongoDB collection
+            reference.
+        </p>
+
+        <p>
+            These issues provided opportunities to improve the organization,
+            maintainability, validation, error handling, and security of
+            the application.
+        </p>
+
+        <h2>Algorithms and Data Structures Review</h2>
+
+        <p>
+            The original application used Python dictionaries to represent
+            animal records and MongoDB queries to retrieve information.
+            The original search functionality was relatively basic.
+        </p>
+
+        <p>
+            As part of the capstone, I planned to expand the application's
+            ability to search, filter, process, and sort animal records.
+        </p>
+
+        <h2>Database Review</h2>
+
+        <p>
+            The original application demonstrated Create and Read database
+            operations but did not include Update and Delete functionality.
+        </p>
+
+        <p>
+            Completing the remaining CRUD operations provided a clear
+            opportunity to expand the database functionality while
+            maintaining the original purpose of the application.
+        </p>
+
+        <h2>Planned Capstone Enhancements</h2>
+
+        <ul class="topics">
+
+            <li>
+                <strong>Software Design and Engineering:</strong>
+                Improve code organization, validation, error handling,
+                documentation, and credential security.
+            </li>
+
+            <li>
+                <strong>Algorithms and Data Structures:</strong>
+                Add multi-criteria searching, filtering, and sorting
+                functionality.
+            </li>
+
+            <li>
+                <strong>Databases:</strong>
+                Add Update and Delete operations to complete the
+                application's basic CRUD functionality.
+            </li>
+
+        </ul>
+
+        <h2>Purpose of the Review</h2>
+
+        <p>
+            The code review established the foundation for the remaining
+            capstone milestones. Rather than replacing the original
+            project, the goal was to identify specific areas where the
+            application could be improved and then progressively enhance
+            the artifact across software engineering, algorithms and data
+            structures, and database development.
+        </p>
+
+    </article>
+
+</main>
+
+<footer>
+    <p>© 2026 Taylor Cullum | CS 499 Computer Science Capstone</p>
+</footer>
+
+</body>
+</html>
